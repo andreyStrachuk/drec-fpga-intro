@@ -1,0 +1,111 @@
+#! /usr/bin/vvp
+:ivl_version "11.0 (stable)";
+:ivl_delay_selection "TYPICAL";
+:vpi_time_precision - 10;
+:vpi_module "/usr/lib/x86_64-linux-gnu/ivl/system.vpi";
+:vpi_module "/usr/lib/x86_64-linux-gnu/ivl/vhdl_sys.vpi";
+:vpi_module "/usr/lib/x86_64-linux-gnu/ivl/vhdl_textio.vpi";
+:vpi_module "/usr/lib/x86_64-linux-gnu/ivl/v2005_math.vpi";
+:vpi_module "/usr/lib/x86_64-linux-gnu/ivl/va_math.vpi";
+S_0x55b9d68f77f0 .scope module, "testbench" "testbench" 2 11;
+ .timescale -9 -10;
+v0x55b9d6910020_0 .net "ext_imm", 31 0, L_0x55b9d6910890;  1 drivers
+v0x55b9d6910130_0 .net "ext_imm2", 31 0, L_0x55b9d6911040;  1 drivers
+v0x55b9d69101f0_0 .var "imm", 11 0;
+v0x55b9d6910310_0 .net "minus_ext_imm", 31 0, L_0x55b9d6921140;  1 drivers
+v0x55b9d69103b0_0 .net "zero", 31 0, L_0x55b9d69212f0;  1 drivers
+L_0x55b9d69212f0 .arith/sum 32, L_0x55b9d6910890, L_0x55b9d6921140;
+S_0x55b9d68f7980 .scope module, "neg" "neg" 2 26, 3 1 0, S_0x55b9d68f77f0;
+ .timescale -9 -10;
+    .port_info 0 /INPUT 32 "x";
+    .port_info 1 /OUTPUT 32 "minus_x";
+L_0x55b9d68e6550 .functor NOT 32, L_0x55b9d6910890, C4<00000000000000000000000000000000>, C4<00000000000000000000000000000000>, C4<00000000000000000000000000000000>;
+v0x55b9d68f7fb0_0 .net *"_ivl_0", 31 0, L_0x55b9d68e6550;  1 drivers
+L_0x7ff7d36d00a8 .functor BUFT 1, C4<00000000000000000000000000000001>, C4<0>, C4<0>, C4<0>;
+v0x55b9d690eed0_0 .net/2u *"_ivl_2", 31 0, L_0x7ff7d36d00a8;  1 drivers
+v0x55b9d690efb0_0 .net "minus_x", 31 0, L_0x55b9d6921140;  alias, 1 drivers
+v0x55b9d690f070_0 .net "x", 31 0, L_0x55b9d6910890;  alias, 1 drivers
+L_0x55b9d6921140 .arith/sum 32, L_0x55b9d68e6550, L_0x7ff7d36d00a8;
+S_0x55b9d690f1b0 .scope module, "se" "sign_ext" 2 16, 4 1 0, S_0x55b9d68f77f0;
+ .timescale -9 -10;
+    .port_info 0 /INPUT 12 "imm";
+    .port_info 1 /OUTPUT 32 "ext_imm";
+v0x55b9d690f390_0 .net "ext_imm", 31 0, L_0x55b9d6910890;  alias, 1 drivers
+v0x55b9d690f470_0 .net "extended_sign", 19 0, L_0x55b9d6910560;  1 drivers
+v0x55b9d690f530_0 .net "imm", 11 0, v0x55b9d69101f0_0;  1 drivers
+v0x55b9d690f5f0_0 .net "msb", 0 0, L_0x55b9d69104c0;  1 drivers
+L_0x55b9d69104c0 .part v0x55b9d69101f0_0, 11, 1;
+LS_0x55b9d6910560_0_0 .concat [ 1 1 1 1], L_0x55b9d69104c0, L_0x55b9d69104c0, L_0x55b9d69104c0, L_0x55b9d69104c0;
+LS_0x55b9d6910560_0_4 .concat [ 1 1 1 1], L_0x55b9d69104c0, L_0x55b9d69104c0, L_0x55b9d69104c0, L_0x55b9d69104c0;
+LS_0x55b9d6910560_0_8 .concat [ 1 1 1 1], L_0x55b9d69104c0, L_0x55b9d69104c0, L_0x55b9d69104c0, L_0x55b9d69104c0;
+LS_0x55b9d6910560_0_12 .concat [ 1 1 1 1], L_0x55b9d69104c0, L_0x55b9d69104c0, L_0x55b9d69104c0, L_0x55b9d69104c0;
+LS_0x55b9d6910560_0_16 .concat [ 1 1 1 1], L_0x55b9d69104c0, L_0x55b9d69104c0, L_0x55b9d69104c0, L_0x55b9d69104c0;
+LS_0x55b9d6910560_1_0 .concat [ 4 4 4 4], LS_0x55b9d6910560_0_0, LS_0x55b9d6910560_0_4, LS_0x55b9d6910560_0_8, LS_0x55b9d6910560_0_12;
+LS_0x55b9d6910560_1_4 .concat [ 4 0 0 0], LS_0x55b9d6910560_0_16;
+L_0x55b9d6910560 .concat [ 16 4 0 0], LS_0x55b9d6910560_1_0, LS_0x55b9d6910560_1_4;
+L_0x55b9d6910890 .concat [ 12 20 0 0], v0x55b9d69101f0_0, L_0x55b9d6910560;
+S_0x55b9d690f710 .scope module, "se2" "sign_ext2" 2 23, 5 1 0, S_0x55b9d68f77f0;
+ .timescale -9 -10;
+    .port_info 0 /INPUT 12 "imm";
+    .port_info 1 /OUTPUT 32 "ext_imm";
+v0x55b9d690f8f0_0 .net *"_ivl_1", 0 0, L_0x55b9d6910930;  1 drivers
+L_0x7ff7d36d0018 .functor BUFT 1, C4<01>, C4<0>, C4<0>, C4<0>;
+v0x55b9d690f9d0_0 .net/2s *"_ivl_2", 1 0, L_0x7ff7d36d0018;  1 drivers
+L_0x7ff7d36d0060 .functor BUFT 1, C4<00>, C4<0>, C4<0>, C4<0>;
+v0x55b9d690fab0_0 .net/2s *"_ivl_4", 1 0, L_0x7ff7d36d0060;  1 drivers
+v0x55b9d690fb70_0 .net *"_ivl_6", 1 0, L_0x55b9d6910a00;  1 drivers
+v0x55b9d690fc50_0 .net "ext", 19 0, L_0x55b9d6910c60;  1 drivers
+v0x55b9d690fd80_0 .net "ext_imm", 31 0, L_0x55b9d6911040;  alias, 1 drivers
+v0x55b9d690fe60_0 .net "imm", 11 0, v0x55b9d69101f0_0;  alias, 1 drivers
+v0x55b9d690ff20_0 .net "msb", 0 0, L_0x55b9d6910b70;  1 drivers
+L_0x55b9d6910930 .part v0x55b9d69101f0_0, 11, 1;
+L_0x55b9d6910a00 .functor MUXZ 2, L_0x7ff7d36d0060, L_0x7ff7d36d0018, L_0x55b9d6910930, C4<>;
+L_0x55b9d6910b70 .part L_0x55b9d6910a00, 0, 1;
+LS_0x55b9d6910c60_0_0 .concat [ 1 1 1 1], L_0x55b9d6910b70, L_0x55b9d6910b70, L_0x55b9d6910b70, L_0x55b9d6910b70;
+LS_0x55b9d6910c60_0_4 .concat [ 1 1 1 1], L_0x55b9d6910b70, L_0x55b9d6910b70, L_0x55b9d6910b70, L_0x55b9d6910b70;
+LS_0x55b9d6910c60_0_8 .concat [ 1 1 1 1], L_0x55b9d6910b70, L_0x55b9d6910b70, L_0x55b9d6910b70, L_0x55b9d6910b70;
+LS_0x55b9d6910c60_0_12 .concat [ 1 1 1 1], L_0x55b9d6910b70, L_0x55b9d6910b70, L_0x55b9d6910b70, L_0x55b9d6910b70;
+LS_0x55b9d6910c60_0_16 .concat [ 1 1 1 1], L_0x55b9d6910b70, L_0x55b9d6910b70, L_0x55b9d6910b70, L_0x55b9d6910b70;
+LS_0x55b9d6910c60_1_0 .concat [ 4 4 4 4], LS_0x55b9d6910c60_0_0, LS_0x55b9d6910c60_0_4, LS_0x55b9d6910c60_0_8, LS_0x55b9d6910c60_0_12;
+LS_0x55b9d6910c60_1_4 .concat [ 4 0 0 0], LS_0x55b9d6910c60_0_16;
+L_0x55b9d6910c60 .concat [ 16 4 0 0], LS_0x55b9d6910c60_1_0, LS_0x55b9d6910c60_1_4;
+L_0x55b9d6911040 .concat [ 12 20 0 0], v0x55b9d69101f0_0, L_0x55b9d6910c60;
+    .scope S_0x55b9d68f77f0;
+T_0 ;
+    %pushi/vec4 0, 0, 12;
+    %store/vec4 v0x55b9d69101f0_0, 0, 12;
+    %end;
+    .thread T_0;
+    .scope S_0x55b9d68f77f0;
+T_1 ;
+    %vpi_call 2 37 "$dumpvars" {0 0 0};
+    %delay 20, 0;
+    %pushi/vec4 5, 0, 12;
+    %store/vec4 v0x55b9d69101f0_0, 0, 12;
+    %delay 20, 0;
+    %pushi/vec4 12, 0, 12;
+    %store/vec4 v0x55b9d69101f0_0, 0, 12;
+    %delay 20, 0;
+    %pushi/vec4 4091, 0, 12;
+    %store/vec4 v0x55b9d69101f0_0, 0, 12;
+    %delay 20, 0;
+    %pushi/vec4 4084, 0, 12;
+    %store/vec4 v0x55b9d69101f0_0, 0, 12;
+    %delay 20, 0;
+    %pushi/vec4 1337, 0, 12;
+    %store/vec4 v0x55b9d69101f0_0, 0, 12;
+    %delay 20, 0;
+    %pushi/vec4 2077, 0, 12;
+    %store/vec4 v0x55b9d69101f0_0, 0, 12;
+    %delay 20, 0;
+    %vpi_call 2 44 "$finish" {0 0 0};
+    %end;
+    .thread T_1;
+# The file index is used to find the file name in the following table.
+:file_names 6;
+    "N/A";
+    "<interactive>";
+    "testbench.v";
+    "neg.v";
+    "sign_ext.v";
+    "sign_ext2.v";

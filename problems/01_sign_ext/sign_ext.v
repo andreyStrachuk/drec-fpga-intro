@@ -9,4 +9,8 @@ module sign_ext(
 *   Describe sign extension logic.
 */
 
+wire msb = imm[11];
+wire [19:0]extended_sign = {20{msb}};
+assign ext_imm = {extended_sign, imm};
+
 endmodule
