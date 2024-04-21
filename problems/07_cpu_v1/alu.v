@@ -7,10 +7,23 @@ module alu(
 );
 
 always @(*) begin
-/*
-* Problem 1:
-* Write operations execution logic here.
-*/
+    casez (op)
+        3'b001: begin
+            res <= src_a + src_b;
+        end
+        3'b100: begin
+            res <= src_a ^ src_b;
+        end
+         3'b110: begin
+            res <= src_a | src_b;
+        end
+        3'b111: begin
+            res <= src_a & src_b;
+        end
+        default: begin
+            res <= src_a;
+        end
+    endcase
 end
 
 endmodule
